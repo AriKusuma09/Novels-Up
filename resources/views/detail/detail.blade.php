@@ -74,7 +74,7 @@
                                         <i class="bi bi-book"></i>
                                     </div>
                                     <div class="title-chapter-list">
-                                        <a href="{{ url('/read/'.$novel->slug.'/'.$chap->slug) }}">{{ $chap->name }}<br> <span>{{ $chap->created_at->format('d-m-Y') }}</span></a>
+                                        <a href="{{ url('/read/'.$novel->slug.'/'.$chap->slug) }}">{{ $chap->name }}<br> <span>{{ $chap->created_at->diffForHumans() }}</span></a>
                                     </div>
                                 </div>
                             @endforeach
