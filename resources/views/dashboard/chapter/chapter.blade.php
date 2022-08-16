@@ -45,7 +45,7 @@
 
                 <td>
                   <a href="{{ url('edit-chapter/'.$item->id) }}" class="btn btn-primary btn-action"><i class="bi bi-pencil-fill"></i> Edit</a>
-                  <a href="{{ url('delete-chapter/'.$item->id) }}" class="btn btn-danger btn-action"><i class="bi bi-trash-fill"></i> Delete</a>
+                  <a href="{{ url('delete-chapter/'.$item->id) }}" onclick="deleteChapter(event, {{ $item->id }})" class="btn btn-danger btn-action"><i class="bi bi-trash-fill"></i> Delete</a>
                 </td>
 
                 <td class="text-truncate" style="max-width: 150px">{{ $item->name }}</td>
@@ -75,4 +75,31 @@
 
   </main>
 
+@endsection
+
+
+@section('delete')
+  function deleteChapter(e, chapter_id) {
+    e.preventDefault();
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        document.location.href = '/delete-chapter/' + chapter_id;
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+
+  }  
 @endsection
