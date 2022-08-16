@@ -46,6 +46,7 @@ Route::get('/read/{nov_slug}/{chap_slug}', [ReadNovelController::class, 'index']
 
 // Profile Controller
 Route::get('/profile', [ProfileController::class, 'index']);
+Route::put('update-profile', [ProfileController::class, 'update']);
 
 
 

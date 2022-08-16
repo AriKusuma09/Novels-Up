@@ -708,4 +708,21 @@ body {
     }
 
     /* End Read Page */
+
+
+    /* Profile */
+    .title-profile {
+        color: var(--text-color);
+        border-bottom: 2px solid var(--text-color);
+        padding-bottom: 10px;
+    }
+
+    .form-profile label {
+        color: var(--text-color);
+        transition: 0.4s;
+        -webkit-transition: 0.4s;
+        -moz-transition: 0.4s;
+        -ms-transition: 0.4s;
+        -o-transition: 0.4s;
+}
  }

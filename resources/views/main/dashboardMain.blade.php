@@ -72,9 +72,9 @@
         -webkit-overflow-scrolling: touch;
       }
 
-      trix-toolbar [data-trix-button-group="file-tools"] {
+      /* trix-toolbar [data-trix-button-group="file-tools"] {
         display: none;
-      }
+      } */
     </style>
 
     
@@ -89,6 +89,7 @@
     @yield('dashboard')
 
     <script>
+      @yield('delete')
       // Image Preview
       function previewImage() {
           const image = document.querySelector('#image');
@@ -113,29 +114,40 @@
             slug.value = preslug.toLowerCase();
         });
 
-        document.addEventListener('trix-file-accept', function(e) {
-          e.preventDefault();
-        })
+        // document.addEventListener('trix-file-accept', function(e) {
+        //   e.preventDefault();
+        // })
     </script>
 
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
       
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
   
+    
+
     @if (session('status'))
       <script>
-        swal("Success", "{{ session('status') }}", "success");
+        Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: '{{ session('status') }}',
+      })
       </script>
     @endif
 
     @if (session('success'))
       <script>
-        swal("Welcome!", "{{ session('success') }}", "success");
+        Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: '{{ session('status') }}',
+      })
       </script>
-    @endif
+   @endif
+    
 
   </body>
 </html>

@@ -6,8 +6,8 @@
     </a>
 
     <ul class="nav col-md-4 justify-content-end pe-5">
-      <li class="nav-item"><a href="#" class="px-2 text-muted"><i class="bi bi-github fs-5"></i></a></li>
-      <li class="nav-item"><a href="#" class="px-2 text-muted"><i class="bi bi-instagram fs-5"></i></a></li>
-      <li class="nav-item"><a href="#" class="px-2 text-muted"><i class="bi bi-linkedin fs-5"></i></a></li>
+      <li class="nav-item"><a href="https://github.com/AriKusuma09" class="px-2 text-muted" target="__blank"><i class="bi bi-github fs-5"></i></a></li>
+      <li class="nav-item"><a href="https://www.instagram.com/kaagarkuwa_09/" class="px-2 text-muted" target="__blank"><i class="bi bi-instagram fs-5"></i></a></li>
+      <li class="nav-item"><a href="https://www.linkedin.com/in/ari-kusuma-72a021240/" class="px-2 text-muted" target="__blank"><i class="bi bi-linkedin fs-5"></i></a></li>
     </ul>
 </footer>

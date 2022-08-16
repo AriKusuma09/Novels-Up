@@ -32,7 +32,7 @@
                     <span><a href="{{ url('/detail/'.$chap->novel->slug) }}" class="link-list">{{ $chap->novel->name }}</a></span>
                 </div>
                 <div class="date-up">
-                    <span>{{ $chap->created_at->format('d-m-Y') }}</span>
+                    <span>{{ $chap->created_at->diffForHumans() }}</span>
                 </div>
                 <div class="link-novel">
                     <a href="{{ url('/read/'.$chap->novel->slug.'/'.$chap->slug) }}">{{ $chap->name }}</a>

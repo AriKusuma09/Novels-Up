@@ -87,10 +87,10 @@
                 <input id="text" type="hidden" name="text" class="@error('text') is-invalid @enderror">
                 <trix-editor input="text"></trix-editor>
                 @error('text')
-						<div class="invalid-feedback">
-							{{ $message }}
-						</div>
-					@enderror
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+				@enderror
             </div>
 
              

@@ -36,7 +36,7 @@ class ChapterController extends Controller
             'nov_id' => 'required',
             'slug' => 'required|unique:chapter',
             'chapter' => 'required',
-            'image' => 'required|image|file|max:10048',
+            'image' => 'required|image|file|max:20024',
             'text' => 'required'
         ]);
 
@@ -49,13 +49,15 @@ class ChapterController extends Controller
             $file->move('assets/uploads/chapter/',$filename);
             $chapter->image = $filename;
         }
-
+        
         $chapter->nov_id = $request->input('nov_id');
         $chapter->name = $request->input('name');
         $chapter->slug = $request->input('slug');
         $chapter->status = $request->input('status') == TRUE?'1':'0';
         $chapter->chapter = $request->input('chapter');
         $chapter->text = $request->input('text');
+
+        // $validateData['text'] = $request->file('text')->store('ilustrasi');
 
         $chapter->save($validateData);
         return redirect('/dashboard/chapter-controller')->with('status', 'Chapter Success Added!');
