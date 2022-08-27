@@ -52,7 +52,6 @@ Route::put('update-profile', [ProfileController::class, 'update']);
 
 
 
-
 // Admin Controller
 Route::middleware(['auth', 'isAdmin'])->group(function() {
 
