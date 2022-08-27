@@ -9,12 +9,14 @@
     --background-color: #ffffff;
     --background2-color: #f7f7f7;
     --text-color: #000;
+    --shadow: rgba(0, 0, 0, 0.4);
 }
   
   .darkmode {
     --background-color: #161616;
     --background2-color: #242424;
     --text-color: #ffffff;
+    --shadow: #161616;
 }
 
 .dark-theme-icon {
@@ -62,6 +64,9 @@ body {
     -o-transition: 0.4s;
 }
 
+trix-toolbar [data-trix-button-group] {
+    background-color: white;
+}
 
 /* End Dark Mode */
 
@@ -88,7 +93,7 @@ body {
 }
 
 
-.head h1 {
+.head h2 {
     color: var(--text-color);
 }
 
@@ -207,45 +212,118 @@ body {
     /* End Jumbotron */
 
 
+    /* Random Novel */
+
+    .random {
+        padding-top: 40px;
+    }
+
+    
+
+    .random-card a {
+        text-decoration: none;
+    }
+
+    .random-card .img-random {
+        background-color: black;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+
+    .random-card .img-random img {
+        width: 200px;
+        height: 300px;
+        box-shadow: 10px 15px 16px var(--shadow);
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        opacity: 1;
+        transition: 0.9s;
+        -webkit-transition: 0.9s;
+        -moz-transition: 0.9s;
+        -ms-transition: 0.9s;
+        -o-transition: 0.9s;
+}
+    
+    .random-card a:hover img {
+        opacity: 0.8;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        transition: 0.2s;
+        -webkit-transition: 0.2s;
+        -moz-transition: 0.2s;
+        -ms-transition: 0.2s;
+        -o-transition: 0.2s;
+    }
+
+    .title-random span {
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
+    }
+
+    .random-card a:hover .title-random span {
+        color: #0d6efd;    
+    }
+
+    .random-card .title-random {
+        width: 200px !important;
+        max-width: 200px;
+        text-align: center;
+        color: var(--text-color);
+    }
+
+
+    /* End Random Novel */
+
+
     /* Start Update */
 
     .head {
-        text-align: center;
+        text-align: left;
+        font-family: Viga;
     }
 
-    .head h1::after {
+    /* .head h2::after {
         content: ' ';
         display: block;
         border-bottom: 3px solid var(--text-color);
-        width: 30%;
-        margin: auto;
+        width: 20%;
+        
         padding-bottom: 8px;
-    }
+    } */
 
     
 
     .Card {
         margin-top: 50px;
-        width: 100px;
-
+        width: 330px;
     }
 
     .card-img img {
-        width: 250px;
-        height: 300px;
+        width: 330px;
+        height: 200px;
         border-radius: 12px;
         -webkit-border-radius: 12px;
         -moz-border-radius: 12px;
         -ms-border-radius: 12px;
         -o-border-radius: 12px;
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
+        object-fit: cover;
     }
 
     .title-novel {
         margin-top: 10px;
-        width: 250px;
+        width: 330px;
     }
 
     .text-truncate {
@@ -263,8 +341,12 @@ body {
         
     }
 
+    .line {
+        color: var(--text-color);
+    }
+
     .date-up {
-        width: 250px;
+        width: 330px;
     }
 
     .date-up span {
@@ -274,7 +356,7 @@ body {
     }
 
     .link-novel {
-        width: 250px;
+        width: 330px;
     }
 
     .link-novel a {
@@ -362,7 +444,8 @@ body {
         background-size: cover;
         filter: blur(10px);
         -webkit-filter: blur(10px);
-}
+        object-fit: cover;
+    }
     
 
     .detail-img {
@@ -413,6 +496,7 @@ body {
         padding: 15px 125px 0 30px;
         bottom: -620px;
         left: 60px;
+        width: 270px;
         border-radius: 7px;
         -webkit-border-radius: 7px;
         -moz-border-radius: 7px;
@@ -710,6 +794,50 @@ body {
     /* End Read Page */
 
 
+    /* Comment */
+
+    .comment-body {
+        margin-top: 140px;
+        width: 700px;
+    }
+
+    .garis-comment {
+        color: var(--text-color);
+        height: 5px;
+    }
+
+    .title-comment {
+        color: var(--text-color);
+    }
+
+    .img-comment {
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+}
+
+    .body-comment .right {
+        margin-left: 15px;
+        color: var(--text-color);
+    }
+
+    .body-comment .right {
+        margin-bottom: 20px;
+    }
+
+    .create-comment {
+        margin-bottom: 50px;
+    }
+
+    /* .comment {
+        border-bottom: 1px solid var(--text-color);
+    } */
+
+    /* End Comment */
+
+
     /* Profile */
     .title-profile {
         color: var(--text-color);
@@ -724,5 +852,9 @@ body {
         -moz-transition: 0.4s;
         -ms-transition: 0.4s;
         -o-transition: 0.4s;
-}
+    }
+
+    
+
+    
  }

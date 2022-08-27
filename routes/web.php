@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\ChapterController;
+use App\Http\Controllers\Admin\ChapterMangaController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MangaController;
 use App\Http\Controllers\Admin\NovelController;
 use App\Http\Controllers\AllListController;
 use App\Http\Controllers\DetailNovelController;
@@ -56,26 +58,40 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
 
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
-    // Novel Controller
-    Route::get('/dashboard/novel-controller', [NovelController::class, 'index']);
-    Route::get('/dashboard/novel-controller/add', [NovelController::class, 'add']);
-    Route::post('insert-novel', [NovelController::class, 'insert']);
-    Route::get('edit-novel/{id}', [NovelController::class, 'edit']);
-    Route::put('update-novel/{id}', [NovelController::class, 'update']);
-    Route::get('delete-novel/{id}', [NovelController::class, 'delete']);
+    // Novel
+        // Novel Controller
+        Route::get('/dashboard/novel-controller', [NovelController::class, 'index']);
+        Route::get('/dashboard/novel-controller/add', [NovelController::class, 'add']);
+        Route::post('insert-novel', [NovelController::class, 'insert']);
+        Route::get('edit-novel/{id}', [NovelController::class, 'edit']);
+        Route::put('update-novel/{id}', [NovelController::class, 'update']);
+        Route::get('delete-novel/{id}', [NovelController::class, 'delete']);
 
 
-    // Chapter Controller
-    Route::get('/dashboard/chapter-controller', [ChapterController::class, 'index']);
-    Route::get('/dashboard/chapter-controller/add', [ChapterController::class, 'add']);
-    Route::get('/dashboard/chapter-controller/add/checkSlug', [ChapterController::class, 'checkSlug']);
-    Route::post('insert-chapter', [ChapterController::class, 'insert']);
-    Route::get('edit-chapter/{id}', [ChapterController::class, 'edit']);
-    Route::put('update-chapter/{id}', [ChapterController::class, 'update']);
-    Route::get('delete-chapter/{id}', [ChapterController::class, 'delete']);
+        // Chapter Novel Controller
+        Route::get('/dashboard/chapter-controller', [ChapterController::class, 'index']);
+        Route::get('/dashboard/chapter-controller/add', [ChapterController::class, 'add']);
+        Route::get('/dashboard/chapter-controller/add/checkSlug', [ChapterController::class, 'checkSlug']);
+        Route::post('insert-chapter', [ChapterController::class, 'insert']);
+        Route::get('edit-chapter/{id}', [ChapterController::class, 'edit']);
+        Route::put('update-chapter/{id}', [ChapterController::class, 'update']);
+        Route::get('delete-chapter/{id}', [ChapterController::class, 'delete']);
 
+
+    // Manga    
+        // Manga Controller
+        Route::get('/dashboard/manga-controller', [MangaController::class, 'index']);
+
+
+        // Chapter Manga Controller
+        Route::get('/dashboard/chapter-manga-controller', [ChapterMangaController::class, 'index']);
+
+    
     // Users Data 
     Route::get('/dashboard/users', [DashboardController::class, 'users']);
+
+
+    // 
 
 });
 

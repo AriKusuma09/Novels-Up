@@ -50,7 +50,7 @@
                     @endif
                   </td>
   
-                  <td>{{ $admin->created_at->format('d - m - Y') }}</td>
+                  <td>{{ $admin->created_at->format('d - M - Y') }}</td>
   
                 </tr>
               
@@ -101,7 +101,7 @@
                   @endif
                 </td>
 
-                <td>{{ $item->created_at->format('d - m - Y') }}</td>
+                <td>{{ $item->created_at->format('d - M - Y') }}</td>
 
               </tr>
             
@@ -109,9 +109,9 @@
 
           </tbody>
         </table>
-        <div class="d-flex justify-content-end">
+        {{-- <div class="d-flex justify-content-end">
             <span>{{ $users->links() }}</span>
-        </div>    
+        </div>     --}}
     </div>
 
     

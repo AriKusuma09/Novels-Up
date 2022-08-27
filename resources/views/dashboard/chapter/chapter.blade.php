@@ -95,7 +95,7 @@
         document.location.href = '/delete-chapter/' + chapter_id;
         Swal.fire(
           'Deleted!',
-          'Your file has been deleted.',
+          'Your Data has been deleted.',
           'success'
         )
       }
@@ -103,3 +103,12 @@
 
   }  
 @endsection
+
+
+{{-- 
+  
+  
+
+
+
+  --}}

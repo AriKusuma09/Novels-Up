@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Novel;
 use App\Models\Chapter;
 use Illuminate\Http\Request;
 
@@ -24,12 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-        $chapter = Chapter::latest()->where('status', '1')->paginate(8);
+        $novel = Novel::all()->where('status', '1')->random(4);
+        $chapter = Chapter::latest()->where('status', '1')->paginate(12);
         return view('home.home',[
             'title' => 'Home'
-        ] ,compact('chapter'));
-
-        
+        ] ,compact('chapter', 'novel'));
     }
 }

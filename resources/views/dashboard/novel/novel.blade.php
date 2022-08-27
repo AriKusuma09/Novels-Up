@@ -44,11 +44,11 @@
             @foreach ($novel as $item)
                 <tr>
 
-                  <td class="fw-bold">{{ $loop->iteration }}</td>
+                  <td class="fw-bold">{{ $loop->iteration + $novel->firstItem() - 1 }}</td>
 
                   <td>
                     <a href="{{ url('edit-novel/'.$item->id) }}" class="btn btn-primary btn-action"><i class="bi bi-pencil-fill"></i> Edit</a>
-                    <a href="{{ url('delete-novel/'.$item->id) }}" class="btn btn-danger btn-action"><i class="bi bi-trash-fill"></i> Delete</a>
+                    <a href="{{ url('delete-novel/'.$item->id) }}" onclick="deleteNovel(event, {{ $item->id }})" class="btn btn-danger btn-action"><i class="bi bi-trash-fill"></i> Delete</a>
                   </td>
 
                   <td class="text-truncate" style="max-width: 100px">{{ $item->name }}</td>
@@ -88,4 +88,31 @@
 
   </main>
 
+@endsection
+
+
+@section('delete')
+  function deleteNovel(e, novel_id) {
+    e.preventDefault();
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        document.location.href = '/delete-novel/' + novel_id;
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+
+  }  
 @endsection

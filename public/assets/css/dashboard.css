@@ -42,6 +42,10 @@ body {
   color: #333;
 }
 
+.sidebar .nav-link:hover {
+  color: #2470dc;
+}
+
 .sidebar .nav-link .feather {
   margin-right: 4px;
   color: #727272;
@@ -150,3 +154,13 @@ body {
   box-shadow: 0 5px 16px rgb(0, 0, 0, 0.3);
 }
 
+.box-dashboard .box {
+  width: 300px;
+  padding: 15px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: 2px solid #2470dc;
+} 

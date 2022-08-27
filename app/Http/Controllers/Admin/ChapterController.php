@@ -20,7 +20,7 @@ class ChapterController extends Controller
 
     public function add()
     {
-        $novel = Novel::all();
+        $novel = Novel::where('condition', '1')->where('status', '1')->latest()->get();
         return view('dashboard.chapter.add', [
             'title' => 'Add List Chapter'
         ], compact('novel'));

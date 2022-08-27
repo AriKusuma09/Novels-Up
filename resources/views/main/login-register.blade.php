@@ -24,5 +24,28 @@
     <!--  Bootstrap JS  -->
     <script src="/assets/js/bootstrap.min.js"></script>
 
+    <!-- Sweet Alert  -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session('failed'))
+    <script>
+        Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '{{ session('failed') }}',
+        })
+    </script>
+    @endif
+
+    @if (session('success'))
+    <script>
+        Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: '{{ session('success') }}',
+        })
+    </script>
+    @endif
+
 </body>
 </html>

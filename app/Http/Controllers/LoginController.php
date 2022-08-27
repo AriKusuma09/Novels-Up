@@ -38,7 +38,7 @@ class LoginController extends Controller
             }
         }
 
-        return back()->with('status', 'Login failed!');
+        return back()->with('failed', 'Wrong Email or Password!');
     }
 
     // Logout Function
@@ -50,7 +50,7 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Logout Success!');
     }
     
 }

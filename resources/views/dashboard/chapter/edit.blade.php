@@ -10,7 +10,7 @@
         <h1 class="h2">{{ $title }}</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <button type="submit" class="btn btn-sm btn-outline-secondary px-3 py-2 fw-bold">
-                <i class="bi bi-file-earmark-plus fs-5"></i> Edit List Chapter
+                <i class="bi bi-file-earmark-plus fs-5"></i> Update List Chapter
             </button>
         </div>
         </div>
@@ -47,7 +47,7 @@
                         Active
                         </label>
                     </div>
-                    <select class="form-select" aria-label="Default select example" style="width: 380px;">
+                    <select class="form-select" disabled aria-label="Default select example" style="width: 380px;">
                         <option value="">{{ $chapter->novel->name }}</option>
                         
                       </select>

@@ -27,6 +27,6 @@ class RegisterController extends Controller
 
         user::create($validatedData);
 
-        return redirect('/login')->with('status', 'Registration Successfully!');;
+        return redirect('/login')->with('success', 'Registration Successfully!');;
     }
 }

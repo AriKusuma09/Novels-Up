@@ -10,7 +10,7 @@
         <h1 class="h2">{{ $title }}</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <button type="submit" class="btn btn-sm btn-outline-secondary px-3 py-2 fw-bold">
-                <i class="bi bi-file-earmark-plus fs-5"></i> Post New List Novel
+                <i class="bi bi-file-earmark-plus fs-5"></i> Update List Novel
             </button>
         </div>
         </div>

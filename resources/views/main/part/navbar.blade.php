@@ -20,14 +20,14 @@
           </li>
           @auth
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-person-circle fs-5"></i> {{ auth()->user()->name }}
             </a>
             <ul class="dropdown-menu">
               @if (auth()->user()->role_as == '1')
                 <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-window-reverse"></i> My Dashboard</a></li>
               @endif
-              <li><a class="dropdown-item" href="/profile"><i class="bi bi-layout-text-window-reverse"></i> My Profile</a></li>
+              <li><a class="dropdown-item" href="/profile"><i class="bi bi-person-fill"></i> My Profile</a></li>
               <form action="/logout" method="POST">
                 @csrf
                 <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-left"></i> Logout</button>
@@ -36,7 +36,7 @@
           </li>
           @else
           <li class="nav-item">
-            <a class="nav-link btn btn-primary text-white" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            <a class="nav-link btn btn-primary text-white px-3" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
           </li>
           @endauth
           <span class="icon dark-theme-icon fs-4 me-5" onclick="setDarkMode()" id="darkButton"><i class="bi bi-moon-fill"></i></span>
