@@ -40,7 +40,7 @@
                 Chapter Novel Controller
               </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link {{ Request::is('dashboard/manga-controller') ? 'active':'' }}" href="/dashboard/manga-controller">
                 <span data-feather="shopping-cart" class="align-text-bottom"></span>
                 Manga Controller
@@ -51,11 +51,17 @@
                 <span data-feather="shopping-cart" class="align-text-bottom"></span>
                 Chapter Manga Controller
               </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
               <a class="nav-link {{ Request::is('dashboard/users') ? 'active':'' }}" href="/dashboard/users">
                 <span data-feather="shopping-cart" class="align-text-bottom"></span>
                 Admin And Users 
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('dashboard/trash') ? 'active':'' }}" href="/dashboard/trash">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Trash
               </a>
             </li>
           </ul>

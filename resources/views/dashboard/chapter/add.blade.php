@@ -77,20 +77,19 @@
                 </div>
             </div>   
             <div class="form-floating mt-5 mb-5">
-                {{-- <textarea class="form-control @error('text') is-invalid @enderror" placeholder="Enter Novel Text..." id="floatingTextarea2" style="height: 1200px;" name="text" id="text">{{ old('text') }}</textarea>
-                <label for="floatingTextarea2">Enter Novel Text...</label>
+                <textarea id="summernote" class="form-control @error('text') is-invalid @enderror" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px; resize: none;" name="text">{{ old('text') }}</textarea>
                 @error('text')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-				@enderror --}}
-                <input id="text" type="hidden" name="text" class="@error('text') is-invalid @enderror">
+						<div class="invalid-feedback">
+							{{ $message }}
+						</div>
+				@enderror
+                {{-- <input id="text" type="hidden" name="text" class="@error('text') is-invalid @enderror">
                 <trix-editor input="text"></trix-editor>
                 @error('text')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
-				@enderror
+				@enderror --}}
             </div>
 
              

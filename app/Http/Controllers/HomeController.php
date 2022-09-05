@@ -25,7 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $novel = Novel::all()->where('status', '1')->random(4);
+        // $novel = Novel::all()->where('status', '1')->random(4);
+        $novel = [];
         $chapter = Chapter::latest()->where('status', '1')->paginate(12);
         return view('home.home',[
             'title' => 'Home'

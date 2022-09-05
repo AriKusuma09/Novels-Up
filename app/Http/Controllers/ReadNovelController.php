@@ -17,9 +17,13 @@ class ReadNovelController extends Controller
             {
                 $novel = Novel::where('slug', $nov_slug)->first();
                 $chapter = Chapter::where('slug', $chap_slug)->first();
+
+                $previous = Chapter::where('nov_id', $novel->id)->where('id', '<', $chapter->id)->orderBy('id', 'DESC')->first();
+                $next = Chapter::where('nov_id', $novel->id)->where('id', '>', $chapter->id)->orderBy('id')->first();
+
                 return view('read.read',[
                     'title' => $chapter->name
-                ] ,compact('chapter', 'novel'));
+                ] ,compact('chapter', 'novel', 'previous', 'next'));
             }
             else
             {

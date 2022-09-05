@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Chapter;
 use App\Models\Novel;
+use Path\To\DOMDocument;
+use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,7 @@ class ChapterController extends Controller
 {
     public function index()
     {
-        $chapter = Chapter::latest()->paginate(7);
+        $chapter = Chapter::latest()->get();
         return view('dashboard.chapter.chapter', [
             'title' => 'Chapter Controller'
         ], compact('chapter'));
@@ -37,8 +39,35 @@ class ChapterController extends Controller
             'slug' => 'required|unique:chapter',
             'chapter' => 'required',
             'image' => 'required|image|file|max:20024',
-            'text' => 'required'
+            
         ]);
+
+        $storage = "storage/ilustrasi";
+        $dom =new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML($request->text,LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
+        libxml_clear_errors();
+        $ilustrasi = $dom->getElementsByTagName('img');
+        foreach($ilustrasi as $ilus) {
+            $src = $ilus->getAttribute('src');
+            if(preg_match('/data:images/',$src)) {
+                preg_match('/data:images\/(?<mime>.*?)\;/',$src,$groups);
+                $mimetype = $groups['mime'];
+                $fileNameIlus = uniqid();
+                $fileNameIlusRandom = substr(md5($fileNameIlus),6,6).'_'.time();
+                $filepath = ("$storage/$fileNameIlusRandom.$mimetype");
+                $ilustration = Image::make($src)
+                    ->resize(5000,5000)
+                    ->encode($mimetype,100)
+                    ->save(public_path($filepath));   
+                $new_src = asset($filepath);
+                $ilus->removeAttribute('src');
+                $ilus->setAttribute('src',$new_src);
+                $ilus->setAttribute('class','ilustrasi');
+                
+            }
+        }
+
 
         // Insert Chapter To Database
         if($request->hasFile('image'))
@@ -55,7 +84,8 @@ class ChapterController extends Controller
         $chapter->slug = $request->input('slug');
         $chapter->status = $request->input('status') == TRUE?'1':'0';
         $chapter->chapter = $request->input('chapter');
-        $chapter->text = $request->input('text');
+        // $chapter->text = $request->input('text');
+        $chapter->text = $dom->saveHTML();
 
         // $validateData['text'] = $request->file('text')->store('ilustrasi');
 
@@ -81,8 +111,36 @@ class ChapterController extends Controller
             'name' => 'required|min:2',
             'slug' => 'required',
             'chapter' => 'required',
-            'text' => 'required'
+            
         ]);
+
+        // Upload Ilustration
+        $storage = "/storage/ilustrasi";
+        $dom =new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML($request->text,LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
+        libxml_clear_errors();
+        $ilustrasi = $dom->getElementsByTagName('img');
+        foreach($ilustrasi as $ilus) {
+            $src = $ilus->getAttribute('src');
+            if(preg_match('/data:images/',$src)) {
+                preg_match('/data:images\/(?<mime>.*?)\;/',$src,$groups);
+                $mimetype = $groups['mime'];
+                $fileNameIlus = uniqid();
+                $fileNameIlusRandom = substr(md5($fileNameIlus),6,6).'_'.time();
+                $filepath = ("$storage/$fileNameIlusRandom.$mimetype");
+                $ilustration = Image::make($src)
+                    ->resize(5000,5000)
+                    ->encode($mimetype,100)
+                    ->save(public_path($filepath));   
+                $new_src = asset($filepath);
+                $ilus->removeAttribute('src');
+                $ilus->setAttribute('src',$new_src);
+                $ilus->setAttribute('class','ilustrasi');
+            }
+        }
+
+
 
         // Insert Chapter To Database
         if($request->hasFile('image'))
@@ -103,7 +161,8 @@ class ChapterController extends Controller
         $chapter->slug = $request->input('slug');
         $chapter->status = $request->input('status') == TRUE?'1':'0';
         $chapter->chapter = $request->input('chapter');
-        $chapter->text = $request->input('text');
+        // $chapter->text = $request->input('text');
+        $chapter->text = $dom->saveHTML();
         $chapter->update($validateData);
         return redirect('/dashboard/chapter-controller')->with('status', 'Chapter Success Updated!');
 
@@ -117,7 +176,7 @@ class ChapterController extends Controller
         $path = 'assets/uploads/chapter/'.$chapter->image;
         if(File::exists($path))
         {
-            File::delete($path);
+           File::delete($path);
         }
         $chapter->delete();
         return redirect('/dashboard/chapter-controller')->with('status', 'Chapter Success Deleted!');

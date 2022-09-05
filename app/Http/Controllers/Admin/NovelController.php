@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chapter;
 use App\Models\Novel;
 use Faker\Guesser\Name;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class NovelController extends Controller
     // Routing To Admin Novel Controller Page
     public function index()
     {
-        $novel = Novel::latest()->paginate(5);
+        $novel = Novel::latest()->get();
         return view('dashboard.novel.novel', [
             'title' => 'Novel Controller'
         ], compact('novel'));
@@ -136,13 +137,22 @@ class NovelController extends Controller
         if($novel->image)
         {
             $path = 'assets/uploads/novel/'.$novel->image;
-            if(File::exists($path))
-            {
-                File::delete($path);
-            }
+            // if(File::exists($path))
+            // {
+            //     File::delete($path);
+            // }
         }
         $novel->delete();
-        return redirect('/dashboard/novel-controller')->with('status', 'Novel Success Deleted!');
+
+        $chapters = Chapter::where('nov_id', $id)->get();
+        foreach ($chapters as $chapter) 
+        {
+            $chapter->delete();
+        }
+
+        
+
+        return redirect('/dashboard/novel-controller')->with('status', 'Novel Success Moved To Trash!');
     }
 
 }

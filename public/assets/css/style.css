@@ -270,6 +270,16 @@ trix-toolbar [data-trix-button-group] {
         -moz-transition: 0.3s;
         -ms-transition: 0.3s;
         -o-transition: 0.3s;
+        font-weight: 400;
+        overflow:hidden;
+        max-height: 9rem;
+        -webkit-box-orient: vertical;
+        display: block;
+        display: -webkit-box;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 4;
+        color: var(--text-color);
     }
 
     .random-card a:hover .title-random span {
@@ -280,7 +290,6 @@ trix-toolbar [data-trix-button-group] {
         width: 200px !important;
         max-width: 200px;
         text-align: center;
-        color: var(--text-color);
     }
 
 
@@ -441,10 +450,6 @@ trix-toolbar [data-trix-button-group] {
         -moz-transition: 0.4s;
         -ms-transition: 0.4s;
         -o-transition: 0.4s;
-    }
-
-    .info-desc div {
-        margin: 9px 0;
     }
 
     .card-list a {
@@ -631,7 +636,7 @@ trix-toolbar [data-trix-button-group] {
         -moz-transition: 0.4s;
         -ms-transition: 0.4s;
         -o-transition: 0.4s;
-}
+    }
 
     .chapter-body {
         margin-top: 60px;
@@ -811,16 +816,20 @@ trix-toolbar [data-trix-button-group] {
     }
 
     .read-mid .text {
-        color: var(--text-color);
-        font-family: 'Poppins', sans-serif;
-        padding: 40px 30px;
+        padding: 40px 30px !important;
+    }
+
+    .read-mid .text p {
+        color: var(--text-color) !important;
+        font-family: 'Poppins', sans-serif !important;
+       
         -webkit-user-select: none; /* Safari */
         -ms-user-select: none; /* IE 10 and IE 11 */
         user-select: none; /* Standard syntax */
     }
 
-    .read-mid .text div {
-        padding: 10px 0;
+    .read-mid .text p {
+        padding: 5px 0 !important;
     }
 
     .read-bottom {

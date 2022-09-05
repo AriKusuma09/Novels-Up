@@ -60,15 +60,14 @@
                 </div>
             </div>
             <div class="form-floating mt-4">
-                {{-- <textarea class="form-control @error('description') is-invalid @enderror" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px; resize: none;" name="description" id="description">{{ old('description', $novel->description) }}</textarea>
-                <label for="floatingTextarea2">Enter Description Novel...</label>
+                <textarea id="summernote" class="form-control @error('description') is-invalid @enderror" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px; resize: none;" name="description">{{ old('description', $novel->description) }}</textarea>
                 @error('description')
 						<div class="invalid-feedback">
 							{{ $message }}
 						</div>
-					@enderror --}}
-                <input id="description" type="hidden" name="description" value="{{ old('description', $novel->description ) }}">
-                <trix-editor input="description"></trix-editor>
+				@enderror
+                {{-- <input id="description" type="hidden" name="description" value="{{ old('description', $novel->description ) }}">
+                <trix-editor input="description"></trix-editor> --}}
             </div>
             <div class="d-flex justify-content-between mt-5">
                 <div class="mb-3">

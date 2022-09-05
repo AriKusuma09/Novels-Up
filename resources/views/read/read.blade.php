@@ -16,8 +16,20 @@
             </div>
         
             <div class="link-read">
-                <a href=""><i class="bi bi-skip-backward me-1"></i> Sebelumnya</a> | <a href="{{ url('/detail/'.$novel->slug) }}"><i class="bi bi-list-ul"></i> Daftar Isi</a>  | <a href="">Selanjutnya <i class="bi bi-skip-forward ms-1"></i></a>
-            </div>
+                    @if ($previous)
+                        <a href="/read/{{ $novel->slug }}/{{ $previous->slug }}"><i class="bi bi-skip-backward me-1"></i> Sebelumnya</a>
+                    @else
+                        <a href="#"><i class="bi bi-skip-backward me-1"></i> Sebelumnya</a>
+                    @endif
+                    | 
+                    <a href="{{ url('/detail/'.$novel->slug) }}"><i class="bi bi-list-ul"></i> Daftar Isi</a>  
+                    | 
+                    @if ($next)
+                        <a href="/read/{{ $novel->slug }}/{{ $next->slug }}">Selanjutnya <i class="bi bi-skip-forward ms-1"></i></a>
+                    @else
+                        <a href="#">Selanjutnya <i class="bi bi-skip-forward ms-1"></i></a>
+                    @endif
+                </div>
         </div>
 
         <div class="read-mid">

@@ -14,26 +14,26 @@
 
     {{-- Table Data Novel --}}
     <div class="d-flex justify-content-end me-5">
-      <span>{{ $chapter->links() }}</span>
+      {{-- <span>{{ $chapter->links() }}</span> --}}
     </div>
     <div class="table-responsive">
-      <table class="table align-middle">
+      <table class="table align-middle" id="chapterTable">
           <thead class="text-center">
             <tr>
              
-              <th scope="col">No</th>
+              <th class="text-center" scope="col">No</th>
               
-              <th scope="col">Action</th>
+              <th class="text-center" scope="col">Action</th>
 
-              <th scope="col">Name</th>
+              <th class="text-center" scope="col">Name</th>
 
-              <th scope="col">Chapter</th>
+              <th class="text-center" scope="col">Chapter</th>
               
-              <th scope="col">Status</th>
+              <th class="text-center" scope="col">Status</th>
 
-              <th scope="col">Created At</th>
+              <th class="text-center" scope="col">Created At</th>
               
-              <th scope="col">Novel</th>
+              <th class="text-center" scope="col">Novel</th>
               
             </tr>
           </thead>
@@ -41,7 +41,7 @@
             @foreach ($chapter as $item)
                 
               <tr>
-                <td class="fw-bold">{{ $loop->iteration + $chapter->firstItem() - 1 }}</td>
+                <td class="fw-bold">{{ $loop->iteration }}</td>
 
                 <td>
                   <a href="{{ url('edit-chapter/'.$item->id) }}" class="btn btn-primary btn-action"><i class="bi bi-pencil-fill"></i> Edit</a>
@@ -71,6 +71,32 @@
         </table>    
     </div>
 
+    {{-- <table id="chapterTable" class="display" style="width:100%">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Office</th>
+              <th>Age</th>
+              <th>Start date</th>
+              <th>Salary</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Tiger Nixon</td>
+              <td>System Architect</td>
+              <td>Edinburgh</td>
+              <td>61</td>
+              <td>2011-04-25</td>
+              <td>$320,800</td>
+          </tr>
+      </tbody>
+  </table> --}}
+
+
+
+
     
 
   </main>
@@ -79,6 +105,11 @@
 
 
 @section('delete')
+<script>
+  $(document).ready( function () {
+  $('#chapterTable').DataTable();
+  });
+
   function deleteChapter(e, chapter_id) {
     e.preventDefault();
 
@@ -102,6 +133,7 @@
     })
 
   }  
+</script>
 @endsection
 
 

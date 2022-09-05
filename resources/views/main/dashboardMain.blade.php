@@ -18,9 +18,16 @@
 
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" >
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
     {{-- Trix Editor --}}
-    <link rel="stylesheet" type="text/css" href="/assets/css/trix.css">
-    <script type="text/javascript" src="/assets/js/trix.js"></script>
+    {{-- <link rel="stylesheet" type="text/css" href="/assets/css/trix.css">
+    <script type="text/javascript" src="/assets/js/trix.js"></script> --}}
+
+    {{-- Summernote --}}
+    <link rel="stylesheet" href="{{ asset('assets/vendor/summernote/summernote.min.css') }}">
+    
+
 
     <style>
       .bd-placeholder-img {
@@ -89,10 +96,18 @@
 
     @include('main.part.sidebar')
 
+
+    <script
+    src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
     @yield('dashboard')
 
+    @yield('delete')
+
     <script>
-      @yield('delete')
       // Image Preview
       function previewImage() {
           const image = document.querySelector('#image');
@@ -122,11 +137,33 @@
         // })
     </script>
 
+    <script src="{{ asset('assets/vendor/summernote/summernote.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+          $('#summernote').summernote({
+            toolbar: [
+              // [groupName, [list of button]]
+              ['style', ['bold', 'italic', 'underline', 'clear']],
+              ['font', ['strikethrough', 'superscript', 'subscript']],
+              ['fontsize', ['fontsize']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['height', ['height']],
+              ['insert', ['link', 'picture', 'video']],
+            ],
+            height:400,
+            popatmouse:true
+          });
+
+        })
+    </script>
+
     <script src="/assets/js/dashboard.js"></script>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script src="/assets/js/bootstrap.bundle.min.js"></scrip>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
       
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
@@ -156,3 +193,5 @@
 
   </body>
 </html>
+
+

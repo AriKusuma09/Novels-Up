@@ -14,28 +14,28 @@
 
     {{-- Table Data Novel --}}
     <div class="d-flex justify-content-end me-5">
-      <span>{{ $novel->links() }}</span>
+      {{-- <span>{{ $novel->links() }}</span> --}}
     </div>
     <div class="table-responsive">
-      <table class="table align-middle">
+      <table class="table align-middle" id="chapterTable">
           <thead class="text-center">
             <tr>
              
-              <th scope="col">No</th>
+              <th class="text-center" scope="col">No</th>
               
-              <th scope="col">Action</th>
+              <th class="text-center" scope="col">Action</th>
 
-              <th scope="col">Name</th>
+              <th class="text-center" scope="col">Name</th>
 
-              <th scope="col">Type</th>
+              <th class="text-center" scope="col">Type</th>
 
-              <th scope="col">Finished/Ongoing</th>
+              <th class="text-center" scope="col">Finished/Ongoing</th>
               
-              <th scope="col">Status</th>
+              <th class="text-center" scope="col">Status</th>
               
-              <th scope="col">Total Chapter</th>
+              <th class="text-center" scope="col">Total Chapter</th>
               
-              <th scope="col">Image</th>
+              <th class="text-center" scope="col">Image</th>
               
             </tr>
           </thead>
@@ -44,7 +44,7 @@
             @foreach ($novel as $item)
                 <tr>
 
-                  <td class="fw-bold">{{ $loop->iteration + $novel->firstItem() - 1 }}</td>
+                  <td class="fw-bold">{{ $loop->iteration}}</td>
 
                   <td>
                     <a href="{{ url('edit-novel/'.$item->id) }}" class="btn btn-primary btn-action"><i class="bi bi-pencil-fill"></i> Edit</a>
@@ -92,7 +92,12 @@
 
 
 @section('delete')
-  function deleteNovel(e, novel_id) {
+<script>
+  $(document).ready( function () {
+  $('#chapterTable').DataTable();
+} );
+
+    function deleteNovel(e, novel_id) {
     e.preventDefault();
 
     Swal.fire({
@@ -108,11 +113,12 @@
         document.location.href = '/delete-novel/' + novel_id;
         Swal.fire(
           'Deleted!',
-          'Your file has been deleted.',
+          'Novel Has Been Moved To Trash!',
           'success'
         )
       }
     })
 
   }  
+  </script>
 @endsection

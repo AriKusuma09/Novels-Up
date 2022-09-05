@@ -164,3 +164,28 @@ body {
   -o-border-radius: 10px;
   border: 2px solid #2470dc;
 } 
+
+.dataTables_length, .dataTables_filter {
+  margin-bottom: 20px;
+}
+
+.dataTables_filter label{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.dataTables_filter input[type="search"] {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+  width: 210px;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  margin-left: 10px;
+}
+
+.dataTables_filter input[type="search"]:focus {
+  border-bottom: 1px solid #2470dc;
+}

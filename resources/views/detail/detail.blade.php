@@ -11,7 +11,7 @@
     <div class="container">
         <div class="detail-body">
             <div class="detail-img">
-                <img src="{{ asset('assets/uploads/novel/'.$novel->image) }}" class="cover-novel" alt="">
+                <img src="{{ asset('assets/uploads/novel/'.$novel->image) }}" class="cover-novel" alt="Cover {{ $novel->name }}" title="Cover {{ $novel->name }}">
                 <div class="type-status">
                     <span class="info-type">{{ $novel->type }}</span>
                     <span class="info-status">

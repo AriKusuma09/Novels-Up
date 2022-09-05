@@ -26,7 +26,7 @@
                             <div class="img-random">
                                 <img src="{{ asset('assets/uploads/novel/'.$nov->image) }}" alt="">
                             </div>
-                            <div class="title-random mt-3 text-truncate">
+                            <div class="title-random mt-3 ">
                                 <span>{{ $nov->name }}</span>
                             </div>
                         </a>

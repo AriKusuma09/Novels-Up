@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ChapterMangaController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MangaController;
 use App\Http\Controllers\Admin\NovelController;
+use App\Http\Controllers\Admin\TrashController;
 use App\Http\Controllers\AllListController;
 use App\Http\Controllers\DetailNovelController;
 use App\Http\Controllers\HomeController;
@@ -89,6 +90,11 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
     // Users Data 
     Route::get('/dashboard/users', [DashboardController::class, 'users']);
 
+    // Trash
+    route::get('/dashboard/trash', [TrashController::class, 'index']);
+    route::post('/dashboard/trash/restore/{id}', [TrashController::class, 'restore']);
+    route::post('/dashboard/trash/delete/{id}', [TrashController::class, 'delete']);
+    
 
     // 
 

@@ -21,7 +21,7 @@
           @auth
           <li class="nav-item dropdown">
             <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle fs-5"></i> {{ auth()->user()->name }}
+              <i class="bi bi-person-circle fs-5"></i> {{ auth()->user()->username }}
             </a>
             <ul class="dropdown-menu">
               @if (auth()->user()->role_as == '1')
